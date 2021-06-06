@@ -7,7 +7,6 @@ const sizeGroup = ['medium', 'big', 'reallybig'];
 const rotationGroup = ['rotateleft', 'rotateright'];
 const inclinationGroup = ['skewleft', 'skewright'];
 
-
 function randomClass() {
   const randomStyle = styleGroup[Math.floor(Math.random() * styleGroup.length)];
   const randomSize = sizeGroup[Math.floor(Math.random() * sizeGroup.length)];
@@ -17,21 +16,22 @@ function randomClass() {
 }
 
 function clickRandomClasses(word) {
-  word.target.className = randomClass();
+  const palavra = word;
+  palavra.target.className = randomClass();
 }
 
 function addClickEventListener() {
-  let spans = document.querySelectorAll('#carta-gerada span');
-  for (let index = 0; index < spans.length; index += 1){
+  const spans = document.querySelectorAll('#carta-gerada span');
+  for (let index = 0; index < spans.length; index += 1) {
     spans[index].addEventListener('click', clickRandomClasses);
   }
 }
 
 function cartMaker() {
   cartOutput.innerHTML = '';
-  let cartText = cartInput.value.split(' ');
-  for (let index = 0; index < cartText.length; index += 1){
-    let word = document.createElement('span');
+  const cartText = cartInput.value.split(' ');
+  for (let index = 0; index < cartText.length; index += 1) {
+    const word = document.createElement('span');
     word.innerText = cartText[index];
     word.className = randomClass();
     cartOutput.appendChild(word);
@@ -42,8 +42,8 @@ function cartMaker() {
 }
 
 function inputVerifier() {
-  let inputText = cartInput.value.replace(/\s/g, '');
-  if (inputText.length > 0){
+  const inputText = cartInput.value.replace(/\s/g, '');
+  if (inputText.length > 0) {
     cartMaker();
   } else {
     cartOutput.innerText = 'Por favor, digite o conteúdo da carta.';
